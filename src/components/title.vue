@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: 'title',
+    name: 'vTitle',
     props: {
         value: {
             type: Boolean,
