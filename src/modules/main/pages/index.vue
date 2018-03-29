@@ -1,15 +1,16 @@
 <template>
-<div :class="`pages ${$route.name}`">
+<v-page>
 	<v-title v-model="isShow"></v-title>
 	<p v-for="(item, index) in list" @click="handleClick(index)" :class="{active: ind === index}">{{item.title}}</p>
-	<p @click="add">点击监听num：{{numObj.num}}</p>
-</div>
+	<p class="flag" v-if="this.flag">{{this.flagText}}</p>
+	<p @click="add(233, $event)">点击监听num：{{numObj.num}}</p>
+</v-page>
 </template>
 
 <script>
-import Title from '@/components/title';
+import vTitle from '../components/vTitle';
 export default {
-	name: 'index',
+	name: 'main_entry',
 	data() {
 		return {
 			list: [{
@@ -27,6 +28,8 @@ export default {
 				num: 0,
 				test: 123
 			},
+			flag: true,
+			flagText: '测试flag',
 			ind: 0
 		}
 	},
@@ -34,8 +37,9 @@ export default {
 		handleClick(index) {
 			this.ind = index
 		},
-		add() {
-			this.numObj.num++
+		add(num, event) {
+			console.log(num, event);
+			this.numObj.num++;
 		}
 	},
 	computed: {
@@ -63,7 +67,7 @@ export default {
 		},
 	},
 	components: {
-		'v-title': Title
+		vTitle
 	}
 }
 </script>

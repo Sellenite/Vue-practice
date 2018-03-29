@@ -1,15 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '@/pages/index'
+import notFound from '@/modules/404/router';
+import mainRouter from '@/modules/main/router';
+import resultRouter from '@/modules/result/router';
 
-Vue.use(Router)
-
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: Index
-    }
-  ]
-})
+export default {
+	routes: [
+		...notFound,
+		...mainRouter,
+		...resultRouter
+	]
+}

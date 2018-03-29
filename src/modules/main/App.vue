@@ -1,19 +1,12 @@
 <template>
-	<div id="app">
+	<div class="app-view">
 		<transition :name="$store.state.transitionStore.transitionName">
-			<keep-alive>
-				<router-view/>
-			</keep-alive>
+			<router-view></router-view>
 		</transition>
 	</div>
 </template>
 <script>
 export default {
-	name: 'App'
+	name: 'modules_main'
 }
-
 </script>
-<style lang="scss">
-@import '~@/scss/index.scss';
-
-</style>
