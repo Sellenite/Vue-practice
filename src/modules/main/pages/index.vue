@@ -1,5 +1,5 @@
 <template>
-<v-page>
+<v-page :className="'page-main'">
 	<v-title v-model="isShow"></v-title>
 	<p v-for="(item, index) in list" @click="handleClick(index)" :class="{active: ind === index}">{{item.title}}</p>
 	<p class="flag" v-if="this.flag">{{this.flagText}}</p>

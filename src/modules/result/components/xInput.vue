@@ -18,7 +18,10 @@ export default {
 <style lang="scss" scoped>
 .x-input {
     border: 1px solid #CCC;
+    width: 90%;
+    margin: 10px auto;
     input {
+        box-sizing: border-box;
         display: inline-block;
         margin: 10px 0;
         padding: 0 10px;
