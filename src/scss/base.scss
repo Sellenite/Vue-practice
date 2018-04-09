@@ -19,33 +19,25 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	height: 100%;
-	position: relative; // Page Turn on Transian Effect
-	.turn-on {
-		&-enter {
-			transform: translate3d(100%, 0, 0);
-		}
-		&-leave-to {
-			transform: translate3d(-100%, 0, 0);
-		}
-		&-enter-active,
-		&-leave-active {
-			transition: transform .4s ease;
-		}
-	} // Page Turn Off Transian Effect
-	.turn-off {
-		&-enter {
-			transform: translate3d(-100%, 0, 0);
-		}
-		&-leave-to {
-			transform: translate3d(100%, 0, 0);
-		}
-		&-leave-active {
-			z-index: 2;
-		}
-		&-enter-active,
-		&-leave-active {
-			transition: transform .4s ease;
-		}
+	position: relative;
+	/* 这两个可以理解为右边的页面往中间移动 */
+	.turn-on-enter,
+	.turn-off-leave-to {
+		transform: translate3d(100%, 0, 0);
+		-webkit-transform: translate3d(100%, 0, 0);
+	}
+	/* 这两个可以理解为左边的页面往中间移动 */
+	.turn-off-enter,
+	.turn-on-leave-to {
+		transform: translate3d(-100%, 0, 0);
+		-webkit-transform: translate3d(-100%, 0, 0);
+	}
+	.turn-on-enter-active,
+	.turn-on-leave-active,
+	.turn-off-enter-active,
+	.turn-off-leave-active {
+		transition: transform .4s ease;
+		-webkit-transition: transform .4s ease;
 	}
 	.app-view {
 		position: absolute;
