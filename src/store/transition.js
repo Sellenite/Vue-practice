@@ -1,8 +1,7 @@
 export default {
   namespaced: true,
   state: {
-    transitionName: '',
-    action: []
+    transitionName: ''
   },
   mutations: {
     setTransition (state, transition) {
