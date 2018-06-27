@@ -1,6 +1,6 @@
 <template>
 	<div class="router-view">
-		<div class="pages" :class="className">
+		<div class="pages" :class="[moduleName, className]">
 			<slot></slot>
 		</div>
 	</div>
@@ -12,6 +12,11 @@ export default {
 		className: {
 			type: String,
 			default: 'vPage'
+		}
+	},
+	data() {
+		return {
+			moduleName: this.$route.name
 		}
 	}
 }

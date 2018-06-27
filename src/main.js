@@ -7,6 +7,7 @@ import routers from './router'
 import routeManager from './router/routeManager'
 import Vuex from 'vuex'
 import stores from './store'
+import client from './client/client.js'
 require('./components')
 
 Vue.config.productionTip = false
@@ -14,12 +15,14 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(VueRouter)
 
+window.client = client;
+
 const router = new VueRouter(routers)
 const store = new Vuex.Store(stores)
 const routersManager = new routeManager(router, store)
 
 /* eslint-disable no-new */
-new Vue({
+window.__Vue__ = new Vue({
   el: '#app',
   router,
   store,

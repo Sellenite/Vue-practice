@@ -3,12 +3,13 @@ export default class {
 
 		this.goBack = false;
 
-		window.goBack = (step = -1) => {
+		window.client.goBack = (step = -1) => {
 			this.goBack = true;
 			router.go(step);
 		};
 
 		router.afterEach((to, from) => {
+			// 第一个页面不需要动画，直接加载
 			if(from.name){
 				this._pageAnimation(to, from, store);
 			}
