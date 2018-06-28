@@ -14,10 +14,10 @@
 	</v-page>
 </template>
 <script>
-import xInput from '../components/xInput';
-import vSingleChooser from '../components/vSingleChooser';
-import vMultiChooser from '../components/vMultiChooser';
-import vSelect from '../components/vSelect';
+import xInput from '@ce/xInput';
+import vSingleChooser from '@ce/vSingleChooser';
+import vMultiChooser from '@ce/vMultiChooser';
+import vSelect from '@ce/vSelect';
 export default {
 	name: 'result_index',
 	components: {

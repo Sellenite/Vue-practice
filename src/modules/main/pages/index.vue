@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import vTitle from '../components/vTitle';
+import vTitle from '@ce/vTitle';
 export default {
 	name: 'main_entry',
 	data() {
