@@ -39,7 +39,8 @@ html {
 		transition: transform .4s ease;
 		-webkit-transition: transform .4s ease;
 	}
-	.app-view {
+	.app-view,
+	.router-view {
 		position: absolute;
 		left: 0;
 		top: 0;
