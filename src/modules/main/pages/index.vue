@@ -1,12 +1,12 @@
 <template>
-<v-page :className="'page-main'">
-	<v-title v-model="isShow"></v-title>
-	<p v-for="(item, index) in list" @click="handleClick(index)" :class="{active: ind === index}">{{item.title}}</p>
-	<p class="flag" v-if="this.flag">{{this.flagText}}</p>
-	<p @click="add(233, $event)">点击监听num：{{numObj.num}}</p>
-</v-page>
+	<v-page :className="'page-main'">
+		<v-title v-model="isShow"></v-title>
+		<p v-for="(item, index) in list" @click="handleClick(index)" :class="{active: ind === index}">{{item.title}}</p>
+		<p class="flag" v-if="this.flag">{{this.flagText}}</p>
+		<p @click="add(233, $event)">点击监听num：{{numObj.num}}</p>
+		<p @click="asyncPrint">test async</p>
+	</v-page>
 </template>
-
 <script>
 import vTitle from '@ce/vTitle';
 export default {
@@ -40,6 +40,33 @@ export default {
 		add(num, event) {
 			console.log(num, event);
 			this.numObj.num++;
+		},
+		timeout(ms) {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					let time = +new Date();
+					if (time % 2 === 0) {
+						resolve('success');
+					} else {
+						reject('timeout');
+					}
+				}, ms);
+			});
+		},
+		async asyncPrint() {
+			// await后面的Promise依然可以用catch来捕获reject的内容，不过最好用try-catch
+			// 因为仍然要对不同的情况进行不同的逻辑
+			// async/await/promise.all用法
+			let arr = [200, 300, 1000];
+			arr = arr.map((sec) => {
+				return this.timeout(sec);
+			});
+			try {
+				let results = await Promise.all(arr);
+				console.log(results);
+			} catch (err) {
+				console.log(err);
+			}
 		}
 	},
 	computed: {
@@ -70,10 +97,11 @@ export default {
 		vTitle
 	}
 }
-</script>
 
+</script>
 <style lang="css" scoped>
-    .active {
-        color: red
-    }
+.active {
+	color: red
+}
+
 </style>
