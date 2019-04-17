@@ -4,7 +4,6 @@
             <li v-for="(item, index) in selections" @click="chosenSelection(index)" :title="item.label" :class="{active: index === nowIndex}">{{ item.label }}</li>
         </ul>
     </div>
-    </div>
 </template>
 <script>
 export default {
