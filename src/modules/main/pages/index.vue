@@ -4,10 +4,15 @@
 		<p v-for="(item, index) in list" @click="handleClick(index)" :class="{active: ind === index}">{{item.title}}</p>
 		<p class="flag" v-if="this.flag">{{this.flagText}}</p>
 		<p @click="add(233, $event)">点击监听num：{{numObj.num}}</p>
+		<!-- 测试全局组件插件 -->
+		<!-- <yh-confirm></yh-confirm> -->
+		<p @click="showConfirm">点击显示confirm框</p>
 	</v-page>
 </template>
 <script>
 import vTitle from '@ce/vTitle';
+import yhConfirm from '@/components/plugins/confirm/src/main.vue';
+
 export default {
 	name: 'main_entry',
 	data() {
@@ -39,6 +44,9 @@ export default {
 		add(num, event) {
 			console.log(num, event);
 			this.numObj.num++;
+		},
+		showConfirm() {
+
 		}
 	},
 	computed: {
@@ -66,7 +74,8 @@ export default {
 		}
 	},
 	components: {
-		vTitle
+		vTitle,
+		yhConfirm
 	}
 }
 
