@@ -1,11 +1,12 @@
 <template>
-    <transition name="fade">
+    <!-- 外面还有个作为透明层蒙版的PopupManager，所以这里的wrapper不要设置颜色 -->
+    <transition name="msgbox-fade">
         <div class="yh-confirm__wrapper" v-show="visible">
             <div class="yh-confirm">
                 <div class="title">标题</div>
                 <div class="content">内容</div>
                 <div class="operate">
-                    <div class="btn">
+                    <div class="btn" @click="confirm">
                         <span>确定</span>
                     </div>
                 </div>
@@ -18,7 +19,17 @@
 export default {
     data() {
         return {
-            visible: false
+            visible: false,
+            callBack: {}
+        }
+    },
+    methods: {
+        show() {
+            this.visible = true;
+        },
+        confirm() {
+            this.visible = false;
+            this.callBack.resolve();
         }
     }
 }
@@ -31,7 +42,6 @@ export default {
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, .5);
         display: flex;
         justify-content: center;
         align-items: center;

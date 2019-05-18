@@ -46,7 +46,9 @@ export default {
 			this.numObj.num++;
 		},
 		showConfirm() {
-
+			this.$confirm().then((res) => {
+				console.log('confirm');
+			});
 		}
 	},
 	computed: {
