@@ -5,13 +5,11 @@
 		<p class="flag" v-if="this.flag">{{this.flagText}}</p>
 		<p @click="add(233, $event)">点击监听num：{{numObj.num}}</p>
 		<!-- 测试全局组件插件 -->
-		<!-- <yh-confirm></yh-confirm> -->
 		<p @click="showConfirm">点击显示confirm框</p>
 	</v-page>
 </template>
 <script>
 import vTitle from '@ce/vTitle';
-import yhConfirm from '@/components/plugins/confirm/src/main.vue';
 
 export default {
 	name: 'main_entry',
@@ -46,7 +44,10 @@ export default {
 			this.numObj.num++;
 		},
 		showConfirm() {
-			this.$confirm().then((res) => {
+			this.$confirm({
+				title: '修改的标题',
+				content: '修改的内容'
+			}).then((res) => {
 				console.log('confirm');
 			});
 		}
@@ -76,8 +77,7 @@ export default {
 		}
 	},
 	components: {
-		vTitle,
-		yhConfirm
+		vTitle
 	}
 }
 

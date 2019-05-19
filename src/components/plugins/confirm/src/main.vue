@@ -1,10 +1,11 @@
 <template>
     <!-- 外面还有个作为透明层蒙版的PopupManager，所以这里的wrapper不要设置颜色 -->
+    <!-- 因为有时框需要做一个由上到下的动画等，带着背景色一起动就会很怪 -->
     <transition name="msgbox-fade">
         <div class="yh-confirm__wrapper" v-show="visible">
             <div class="yh-confirm">
-                <div class="title">标题</div>
-                <div class="content">内容</div>
+                <div class="title">{{ title }}</div>
+                <div class="content">{{ content }}</div>
                 <div class="operate">
                     <div class="btn" @click="confirm">
                         <span>确定</span>
@@ -20,7 +21,9 @@ export default {
     data() {
         return {
             visible: false,
-            callBack: {}
+            callBack: {},
+            title: '标题',
+            content: '内容'
         }
     },
     methods: {
