@@ -51,7 +51,6 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 999;
         .yh-confirm {
             box-sizing: border-box;
             display: inline-block;

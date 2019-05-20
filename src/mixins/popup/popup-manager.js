@@ -2,6 +2,7 @@ import { addClass, removeClass } from '@/utils/dom';
 
 let instances = {};
 let hasModal = false;
+let zIndex = 2000;
 
 let getModal = () => {
 	let modalDom = PopupManager.modalDom;
@@ -17,6 +18,10 @@ let getModal = () => {
 }
 
 let PopupManager = {
+    nextZIndex() {
+        // Element是设置了一个全局变量，可以在外面进行对里面进行配置，这里就不做这一步了
+        return zIndex++;
+    },
 	register(id, context) {
 		if (id && context) {
 			instances[id] = context;
@@ -30,12 +35,12 @@ let PopupManager = {
 		}
 		console.log(instances);
 	},
-	openModal() {
+	openModal(zIndex) {
 		/* 渐隐动画配合定义的过度样式触发，时间也是相对应的 */
 		const modalDom = getModal();
+        modalDom.style.zIndex = zIndex;
 		addClass(modalDom, 'v-modal');
-        /* zIndex应该是需要动态计算获取比较好，这里modal和confirm都写死算了 */
-        modalDom.style.zIndex = 998;
+        /* zIndex每次赋值都从popManager的index++ */
 		if (!hasModal) {
 			addClass(modalDom, 'v-modal-enter');
 		}

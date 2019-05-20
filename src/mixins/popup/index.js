@@ -34,7 +34,9 @@ export default {
     methods: {
         open() {
             this._opening = true;
-            PopupManager.openModal();
+            PopupManager.openModal(PopupManager.nextZIndex());
+            // 永远保证里面的元素在modal之上
+            this.$el.style.zIndex = PopupManager.nextZIndex();
         },
         close() {
             this._opening = false;
