@@ -15,7 +15,7 @@ export default class {
 			}
 		});
 	}
-	
+
 	_pageAnimation(to, from, store){
 		// store的模块写法的commit等，需要这么写
 		store.commit('transitionStore/setTransition', this.goBack ? 'turn-off' : 'turn-on');

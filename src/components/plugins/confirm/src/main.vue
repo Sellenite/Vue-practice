@@ -17,7 +17,10 @@
 </template>
 
 <script>
+import Popup from '@/mixins/popup';
+
 export default {
+    mixins: [Popup],
     data() {
         return {
             visible: false,
@@ -48,6 +51,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 999;
         .yh-confirm {
             box-sizing: border-box;
             display: inline-block;
