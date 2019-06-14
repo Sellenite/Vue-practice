@@ -6,10 +6,13 @@
 		<p @click="add(233, $event)">点击监听num：{{numObj.num}}</p>
 		<!-- 测试全局组件插件 -->
 		<p @click="showConfirm">点击显示confirm框</p>
+		<div style="height:20px"></div>
+		<v-menu :menu="menu"></v-menu>
 	</v-page>
 </template>
 <script>
 import vTitle from '@ce/vTitle';
+import vMenu from '@ce/menu';
 
 export default {
 	name: 'main_entry',
@@ -32,7 +35,41 @@ export default {
 			},
 			flag: true,
 			flagText: '测试flag',
-			ind: 0
+			ind: 0,
+			menu: [
+				{
+					label: '测试1',
+					value: 'test1',
+					level: 1,
+					children: [
+						{
+							label: '测试1-1',
+							value: 'test1-1',
+							level: 2,
+							children: [
+								{
+									label: '测试1-1-1',
+									value: 'test1-1-1',
+									level: 3,
+									children: []
+								}
+							]
+						},
+						{
+							label: '测试1-2',
+							value: 'test1-2',
+							level: 2,
+							children: []
+						}
+					]
+				},
+				{
+					label: '测试2',
+					value: 'test2',
+					level: 1,
+					children: []
+				}
+			]
 		}
 	},
 	methods: {
@@ -77,7 +114,8 @@ export default {
 		}
 	},
 	components: {
-		vTitle
+		vTitle,
+		vMenu
 	}
 }
 
