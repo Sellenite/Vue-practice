@@ -1,14 +1,14 @@
 <template>
     <li class="menu-item" :class="[classObj, { 'checked': menuItem.isChecked }]">
         <a href="#" @click="handleClick">{{ menuItem.label }}</a>
-        <ul v-if="menuItem.isChecked" class="sub-menu">
+        <ul v-show="menuItem.isChecked" class="sub-menu">
             <menu-item v-for="(item, index) in menuItem.children" :menuItem="item" :key="index"></menu-item>
         </ul>
     </li>
 </template>
 
 <script>
-import { findBrothersComponents } from '@/utils/findComponents.js';
+import { findBrothersComponents, findComponentsDownward } from '@/utils/findComponents.js';
 
 export default {
     name: 'menu-item',
@@ -30,11 +30,16 @@ export default {
     },
     methods: {
         handleClick() {
-            let ret = findBrothersComponents(this, 'menu-item');
-            console.log(ret);
+            let siblings = findBrothersComponents(this, 'menu-item');
+            let children = findComponentsDownward(this, 'menu-item');
+
             this.$set(this.menuItem, 'isChecked', !this.menuItem.isChecked);
 
-            for (let vm of ret) {
+            for (let vm of siblings) {
+                this.$set(vm.menuItem, 'isChecked', false);
+            }
+
+            for (let vm of children) {
                 this.$set(vm.menuItem, 'isChecked', false);
             }
         }
@@ -57,6 +62,9 @@ export default {
     }
     .sub-menu {
         background-color: #444;
+    }
+    &.checked > a{
+        color: yellow;
     }
 }
 </style>
