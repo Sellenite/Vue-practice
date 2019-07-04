@@ -8,12 +8,14 @@ import routeManager from './router/routeManager'
 import Vuex from 'vuex'
 import stores from './store'
 import client from './client/client.js'
+import waves from '@/directive/waves/waves.js';
 require('./components')
 
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
+Vue.directive('waves', waves);
 
 window.client = client;
 

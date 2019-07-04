@@ -11,6 +11,14 @@
 		<div class="line">
 			<v-select :selections="selectList" @on-change="handleSelect"></v-select>
 		</div>
+		<div class="line">
+			<v-render>
+				<p>123123</p>
+			</v-render>
+		</div>
+		<div class="line">
+			<div class="btn" v-waves="'hit'">测试waves</div>
+		</div>
 	</v-page>
 </template>
 <script>
@@ -18,13 +26,16 @@ import xInput from '@ce/xInput';
 import vSingleChooser from '@ce/vSingleChooser';
 import vMultiChooser from '@ce/vMultiChooser';
 import vSelect from '@ce/vSelect';
+import vRender from '@ce/render';
+
 export default {
 	name: 'result_index',
 	components: {
 		xInput,
 		vSingleChooser,
 		vMultiChooser,
-		vSelect
+		vSelect,
+		vRender
 	},
 	data() {
 		return {
@@ -98,6 +109,16 @@ export default {
 .pages.page-result {
 	.line {
 		margin-top: 30px;
+	}
+	.btn {
+		padding: 6px 10px;
+		background-color: indianred;
+		color: #FFF;
+		margin-left: 10px;
+		font-size: 14px;
+		display: inline-block;
+		cursor: pointer;
+		box-shadow: 0 0 5px rgba(0, 0, 0, .4);
 	}
 }
 
