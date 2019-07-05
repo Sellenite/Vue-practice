@@ -40,10 +40,12 @@ function handleClick(el, binding) {
                     ripple.style.left = rect.width / 2 - ripple.offsetWidth / 2 + 'px';
                     break;
                 default:
-                    // offset[X|Y] 是相对于触发事件的对象左上角和鼠标之间的距离
-                    // page[X|Y] 是相对于整个页面左上角和鼠标之间的距离
-                    ripple.style.top = -(ripple.offsetHeight / 2 - e.offsetY) + 'px';
-                    ripple.style.left = -(ripple.offsetWidth / 2 - e.offsetX) + 'px';
+                    ripple.style.top =
+                        (e.pageY - rect.top - ripple.offsetHeight / 2 - document.documentElement.scrollTop ||
+                            document.body.scrollTop) + 'px';
+                    ripple.style.left =
+                        (e.pageX - rect.left - ripple.offsetWidth / 2 - document.documentElement.scrollLeft ||
+                            document.body.scrollLeft) + 'px';
             }
 
             ripple.style.backgroundColor = opts.color;
