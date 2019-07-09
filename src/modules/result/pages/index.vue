@@ -19,6 +19,13 @@
 		<div class="line">
 			<div class="btn" v-waves="'hit'">测试waves</div>
 		</div>
+		<div class="line">
+			<v-slot>
+				<template slot="defaultSlot" slot-scope="slotProps">
+					<h1>{{ slotProps.user.lastName }}</h1>
+				</template>
+			</v-slot>
+		</div>
 	</v-page>
 </template>
 <script>
@@ -27,6 +34,7 @@ import vSingleChooser from '@ce/vSingleChooser';
 import vMultiChooser from '@ce/vMultiChooser';
 import vSelect from '@ce/vSelect';
 import vRender from '@ce/render';
+import vSlot from '@ce/vSlot';
 
 export default {
 	name: 'result_index',
@@ -35,7 +43,8 @@ export default {
 		vSingleChooser,
 		vMultiChooser,
 		vSelect,
-		vRender
+		vRender,
+		vSlot
 	},
 	data() {
 		return {
