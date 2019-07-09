@@ -1,7 +1,8 @@
 <template>
-    <!-- 知识点：具名插槽，插槽传递props -->
+    <!-- 知识点：具名插槽，插槽传递props，传递methods -->
     <div class="v-slot">
         <slot name="defaultSlot" :user="user">{{ user.lastName }}</slot>
+        <slot name="button" :close="close"></slot>
     </div>
 </template>
 
@@ -12,6 +13,11 @@ export default {
             user: {
                 lastName: 'Satellite'
             }
+        }
+    },
+    methods: {
+        close() {
+            alert('close method from inner')
         }
     }
 }

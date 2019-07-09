@@ -24,6 +24,9 @@
 				<template slot="defaultSlot" slot-scope="slotProps">
 					<h1>{{ slotProps.user.lastName }}</h1>
 				</template>
+				<!-- slot不用template，直接写在上面也可以 -->
+				<!-- slot可以传递函数 -->
+				<button slot="button" slot-scope="methodsProps" @click="methodsProps.close">测试slot传过来的方法</button>
 			</v-slot>
 		</div>
 	</v-page>
