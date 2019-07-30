@@ -16,7 +16,8 @@
 				<p>123123</p>
 			</v-render>
 		</div>
-		<div class="line">
+		<!-- 这个btn是个inline-block，再加上v-waves塞进的元素会导致有空位，需要font-size为0去消除 -->
+		<div class="line" style="font-size: 0">
 			<div class="btn" v-waves="'hit'">测试waves</div>
 		</div>
 		<div class="line">

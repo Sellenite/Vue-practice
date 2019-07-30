@@ -1,15 +1,23 @@
 <template>
     <div class="x-input">
-        <input :value="value" @input="$emit('input', $event.target.value)">
+        <input :value="value" v-clickoutside="handleClose" @input="$emit('input', $event.target.value)">
     </div>
 </template>
 <script>
+import Clickoutside from '@/directive/clickoutside/clickoutside.js';
+
 export default {
     name: 'xInput',
+    directives: { Clickoutside },
     props: {
         value: {
             type: String,
             default: 0
+        }
+    },
+    methods: {
+        handleClose() {
+            console.log(`检测到点击document的时候没有点到设定组件【${this.$options.name}】本身，可以进行菜单收起等设置`);
         }
     }
 }
