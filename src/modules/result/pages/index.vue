@@ -1,7 +1,7 @@
 <template>
 	<v-page :className="'page-result'">
 		<div>result page</div>
-		<x-input v-model="inputValue"></x-input>
+		<x-input v-model="inputValue" v-clickoutside="handleClose"></x-input>
 		<div class="line">
 			<v-single-chooser :selections="periodSingleList" @on-change="handleChooseSingle"></v-single-chooser>
 		</div>
@@ -39,9 +39,11 @@ import vMultiChooser from '@ce/vMultiChooser';
 import vSelect from '@ce/vSelect';
 import vRender from '@ce/render';
 import vSlot from '@ce/vSlot';
+import Clickoutside from '@/directive/clickoutside/clickoutside.js';
 
 export default {
 	name: 'result_index',
+	directives: { Clickoutside },
 	components: {
 		xInput,
 		vSingleChooser,
@@ -113,6 +115,9 @@ export default {
 		},
 		handleSelect(el) {
 			console.log(el);
+		},
+		handleClose() {
+			console.log('直接对【xInput】整个组件使用，在外面定义');
 		}
 	}
 }

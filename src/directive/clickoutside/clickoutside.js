@@ -15,7 +15,6 @@ let seed = 0;
 
 function createDocumentHandler(el, binding, vnode) {
     return function(mouseup = {}, mousedown = {}) {
-        console.log(vnode)
         if (!vnode ||
             !vnode.context ||
             !mouseup.target ||
@@ -23,9 +22,8 @@ function createDocumentHandler(el, binding, vnode) {
             el.contains(mouseup.target) ||
             el.contains(mousedown.target) ||
             el === mouseup.target ||
-            (vnode.context.popperElm &&
-                (vnode.context.popperElm.contains(mouseup.target) ||
-                    vnode.context.popperElm.contains(mousedown.target)))) return;
+            (vnode.context.popperElm && (vnode.context.popperElm.contains(mouseup.target) ||
+            vnode.context.popperElm.contains(mousedown.target)))) return;
 
         if (binding.expression &&
             el[ctx].methodName &&
