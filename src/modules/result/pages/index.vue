@@ -30,6 +30,9 @@
 				<button slot="button" slot-scope="methodsProps" @click="methodsProps.close">测试slot传过来的方法</button>
 			</v-slot>
 		</div>
+		<div class="line">
+			<element-input v-model="elementInputValue" @search="handleElementInputSearch" @change="handleElementInputChange" placeholder="请输入内容"></element-input>
+		</div>
 	</v-page>
 </template>
 <script>
@@ -39,6 +42,7 @@ import vMultiChooser from '@ce/vMultiChooser';
 import vSelect from '@ce/vSelect';
 import vRender from '@ce/render';
 import vSlot from '@ce/vSlot';
+import ElementInput from '@ce/ElementInput';
 import Clickoutside from '@/directive/clickoutside/clickoutside.js';
 
 export default {
@@ -50,7 +54,8 @@ export default {
 		vMultiChooser,
 		vSelect,
 		vRender,
-		vSlot
+		vSlot,
+		ElementInput
 	},
 	data() {
 		return {
@@ -93,7 +98,8 @@ export default {
 					label: '高级版',
 					value: 2
 				}
-			]
+			],
+			elementInputValue: ''
 		}
 	},
 	watch: {
@@ -104,6 +110,9 @@ export default {
 			this.$nextTick(() => {
 				this.inputValue = string.replace(regex, '');
 			});
+		},
+		elementInputValue(val) {
+			// alert('测试compositionstart', val);
 		}
 	},
 	methods: {
@@ -118,7 +127,13 @@ export default {
 		},
 		handleClose() {
 			console.log('直接对【xInput】整个组件使用，在外面定义');
-		}
+		},
+		handleElementInputSearch(val) {
+			console.log('搜索', val);
+		},
+		handleElementInputChange(val) {
+			console.log('更改', val);
+		},
 	}
 }
 
